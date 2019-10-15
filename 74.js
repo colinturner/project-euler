@@ -21,13 +21,14 @@ const digitsFactorialSum = (num) => {
 
 const chainLength = (num) => {
   let current = num;
-  const dfsMap = new Map();
+  let arr = [];
 
-  while (!dfsMap.get(current)) {
-    dfsMap.set(current, digitsFactorialSum(current));
-    current = dfsMap.get(current);
+  while (!arr.includes(current)) {
+    arr.push(current);
+    current = digitsFactorialSum(current)
   }
-  return dfsMap.size;
+  
+  return arr.length;
 }
 
 const numberOfChainsWithExactLengthBetweenBounds = (target, lowerBound, upperBound) => {
